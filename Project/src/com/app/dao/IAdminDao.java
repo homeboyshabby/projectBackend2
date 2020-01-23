@@ -12,4 +12,5 @@ public interface IAdminDao {
 	void addTable(DiningTable d);
 	List<OrderDetails> getOrderDetails(int id);
 	void addEmployee(Employee e, String role);
+	void changeOrderStatus(int orderId);
 }

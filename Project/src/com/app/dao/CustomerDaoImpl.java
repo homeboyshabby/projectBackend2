@@ -13,10 +13,11 @@ import com.app.pojos.Bills;
 import com.app.pojos.Customer;
 import com.app.pojos.MenuItems;
 import com.app.pojos.OrderDetails;
+import com.app.pojos.OrderStatus;
 import com.app.pojos.OrderType;
 import com.app.pojos.Orders;
 import com.app.pojos.Reservation;
-import com.app.pojos.User;
+import com.app.pojos.UserType;
 
 @Repository
 @Transactional
@@ -146,7 +147,7 @@ public class CustomerDaoImpl implements ICustomerDao {
 
 	@Override
 	public Orders getOrderId(int custId) {
-		Orders order = new Orders(new Date(System.currentTimeMillis()),OrderType.valueOf("HOMEDELIVERY"));
+		Orders order = new Orders(new Date(System.currentTimeMillis()),OrderType.valueOf("HOMEDELIVERY"),OrderStatus.valueOf("PENDING"));
 		order.setCustId(new Customer(custId));
 		System.err.println(order.toString());
 		sf.getCurrentSession().persist(order);

@@ -152,4 +152,16 @@ public class AdminController {
 		}
 		return new ResponseEntity<String>("Emp Not Added", HttpStatus.NOT_ACCEPTABLE);
 	}
+	
+	@GetMapping("/changeorderstatus/{id}")
+	public ResponseEntity<?> changeOrderStatus(@PathVariable int id) {
+		try {
+			adminDao.changeOrderStatus(id);
+			return new ResponseEntity<String>("Order Status Changed", HttpStatus.OK);
+		} catch (Exception e) {
+			// TODO: handle exception
+			e.printStackTrace();
+		}
+		return new ResponseEntity<String>("Order Status Not Changed", HttpStatus.NOT_ACCEPTABLE);
+	}
 }

@@ -13,6 +13,7 @@ import com.app.pojos.DiningTable;
 import com.app.pojos.Employee;
 import com.app.pojos.MenuItems;
 import com.app.pojos.OrderDetails;
+import com.app.pojos.OrderStatus;
 import com.app.pojos.Orders;
 import com.app.pojos.UserType;
 
@@ -73,6 +74,11 @@ public class AdminDaoImpl implements IAdminDao {
 	public void addEmployee(Employee e, String role) {
 		e.setRole(UserType.valueOf(role));
 		sf.getCurrentSession().persist(e);	
+	}
+
+	@Override
+	public void changeOrderStatus(int orderId) {
+		sf.getCurrentSession().get(Orders.class, orderId).setStatus(OrderStatus.valueOf("DELIVERED"));
 	}
 
 	

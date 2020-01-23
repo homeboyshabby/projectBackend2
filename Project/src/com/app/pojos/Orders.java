@@ -23,6 +23,7 @@ public class Orders {
 	private Customer custId;
 	private OrderType orderType;
 	private Bills bill;
+	private OrderStatus status;
 	public Orders() {
 		// TODO Auto-generated constructor stub
 	}
@@ -34,6 +35,12 @@ public class Orders {
 		super();
 		this.orderDate = orderDate;
 		this.orderType = orderType;
+	}
+	public Orders(Date orderDate, OrderType orderType, OrderStatus status) {
+		super();
+		this.orderDate = orderDate;
+		this.orderType = orderType;
+		this.status = status;
 	}
 	public Orders(int oId) {
 		this.orderId = oId;
@@ -78,6 +85,15 @@ public class Orders {
 	}
 	public void setOrderType(OrderType orderType) {
 		this.orderType = orderType;
+	}
+
+	@Enumerated(EnumType.STRING)
+	@Column(name = "order_status",nullable = true)
+	public OrderStatus getStatus() {
+		return status;
+	}
+	public void setStatus(OrderStatus status) {
+		this.status = status;
 	}
 	@JsonIgnore
 	@OneToOne(mappedBy = "order",cascade = CascadeType.ALL,orphanRemoval = true)
