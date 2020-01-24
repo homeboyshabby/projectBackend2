@@ -2,5 +2,5 @@ package com.app.pojos;
 
 public enum UserType 
 {
-	WAITER,MANAGER,ADMIN
+	WAITER,MANAGER,ADMIN,DELIVERYBOY
 }

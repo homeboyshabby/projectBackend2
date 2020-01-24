@@ -43,7 +43,7 @@ public class AdminDaoImpl implements IAdminDao {
 
 	@Override
 	public List<Employee> showAllEmployees() throws Exception {
-		String jpql = "select e from Employee e where e.role = '"+ UserType.valueOf("MANAGER") + "' or e.role= '"+ UserType.valueOf("WAITER") + "'";
+		String jpql = "select e from Employee e where e.role = '"+ UserType.valueOf("MANAGER") + "' or e.role= '"+ UserType.valueOf("WAITER") + "' or e.role= '"+ UserType.valueOf("DELIVERYBOY") + "'";
 		return sf.getCurrentSession().createQuery(jpql,Employee.class).getResultList();
 	}
 
@@ -78,7 +78,7 @@ public class AdminDaoImpl implements IAdminDao {
 
 	@Override
 	public void changeOrderStatus(int orderId) {
-		sf.getCurrentSession().get(Orders.class, orderId).setStatus(OrderStatus.valueOf("DELIVERED"));
+		sf.getCurrentSession().get(Orders.class, orderId).setStatus(OrderStatus.valueOf("OUTFORDELIVERY"));
 	}
 
 	

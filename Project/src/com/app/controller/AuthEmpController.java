@@ -23,6 +23,7 @@ public class AuthEmpController {
 	private IAdminDao adminDao;
 	@PostMapping
 	public ResponseEntity<?> authEmployee(@RequestBody Employee e) throws Exception {
+		//System.out.println(e.getEmployeeEmail() + "" + e.getEmployeePassword());
 		Employee emp = adminDao.authEmployee(e.getEmployeeEmail(), e.getEmployeePassword());
 		if (emp != null)
 			return new ResponseEntity<Employee>(emp, HttpStatus.OK);
